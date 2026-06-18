@@ -435,6 +435,24 @@ export const paramList:{ [paramName: string]: ParamData }={
       patchs: []
   },
 
+  [ParamName.cpu_efficiency] : {
+      name: ParamName.cpu_efficiency,
+      group: ParamGroup.CPU,
+      preCondition: [{
+        enable: [ParamName.cpu_stats],
+        disable: [ParamName.legacy_layout, ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      },{
+        enable: [ParamName.legacy_layout],
+        disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }],
+      toggle: {
+        label: localizeStrEnum.CPU_EFFICIENCY_LABEL,
+        description: localizeStrEnum.CPU_EFFICIENCY_DESCRIPTION,
+        defaultEnable: false,
+      },
+      patchs: []
+  },
+
   [ParamName.gpu_stats] : {
       name: ParamName.gpu_stats,
       group: ParamGroup.GPU,
@@ -538,6 +556,78 @@ export const paramList:{ [paramName: string]: ParamData }={
       toggle: {
         label: localizeStrEnum.GPU_TEMP_LABEL,
         description: localizeStrEnum.GPU_TEMP_DESCRIPTION,
+        defaultEnable: false,
+      },
+      patchs: []
+  },
+
+  [ParamName.gpu_junction_temp] : {
+      name: ParamName.gpu_junction_temp,
+      group: ParamGroup.GPU,
+      preCondition: [{
+        enable: [ParamName.gpu_stats],
+        disable: [ParamName.legacy_layout, ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }, {
+        enable: [ParamName.legacy_layout],
+        disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }],
+      toggle: {
+        label: localizeStrEnum.GPU_JUNCTION_TEMP_LABEL,
+        description: localizeStrEnum.GPU_JUNCTION_TEMP_DESCRIPTION,
+        defaultEnable: false,
+      },
+      patchs: []
+  },
+
+  [ParamName.gpu_mem_temp] : {
+      name: ParamName.gpu_mem_temp,
+      group: ParamGroup.GPU,
+      preCondition: [{
+        enable: [ParamName.gpu_stats],
+        disable: [ParamName.legacy_layout, ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }, {
+        enable: [ParamName.legacy_layout],
+        disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }],
+      toggle: {
+        label: localizeStrEnum.GPU_MEM_TEMP_LABEL,
+        description: localizeStrEnum.GPU_MEM_TEMP_DESCRIPTION,
+        defaultEnable: false,
+      },
+      patchs: []
+  },
+
+  [ParamName.gpu_power_limit] : {
+      name: ParamName.gpu_power_limit,
+      group: ParamGroup.GPU,
+      preCondition: [{
+        enable: [ParamName.gpu_stats],
+        disable: [ParamName.legacy_layout, ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }, {
+        enable: [ParamName.legacy_layout],
+        disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }],
+      toggle: {
+        label: localizeStrEnum.GPU_POWER_LIMIT_LABEL,
+        description: localizeStrEnum.GPU_POWER_LIMIT_DESCRIPTION,
+        defaultEnable: false,
+      },
+      patchs: []
+  },
+
+  [ParamName.gpu_fan] : {
+      name: ParamName.gpu_fan,
+      group: ParamGroup.GPU,
+      preCondition: [{
+        enable: [ParamName.gpu_stats],
+        disable: [ParamName.legacy_layout, ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }, {
+        enable: [ParamName.legacy_layout],
+        disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+      }],
+      toggle: {
+        label: localizeStrEnum.GPU_FAN_LABEL,
+        description: localizeStrEnum.GPU_FAN_DESCRIPTION,
         defaultEnable: false,
       },
       patchs: []
@@ -1056,29 +1146,21 @@ export const paramList:{ [paramName: string]: ParamData }={
       patchs:[]
   },
 
-  /*
   [ParamName.throttling_status]:{
     name:ParamName.throttling_status,
     group:ParamGroup.ENGINE,
-    preCondition:[{disable:[ParamName.no_display]}],
+    preCondition: [{
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.legacy_layout,ParamName.preset]
+    }, {
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+    }],
     toggle:{
-        label:"throttling_status",
-        defaultEnable:true,
+        label:localizeStrEnum.THROTTLING_STATUS_LABEL,
+        description:localizeStrEnum.THROTTLING_STATUS_DESCRIPTION,
+        defaultEnable:false,
     },
     patchs:[]
   },
-
-  [ParamName.throttling_status_graph]:{
-    name:ParamName.throttling_status_graph,
-    group:ParamGroup.ENGINE,
-    preCondition:[{disable:[ParamName.no_display]}],
-    toggle:{
-        label:"throttling_status_graph",
-        defaultEnable:true,
-    },
-    patchs:[]
-  },
-  */
 
   [ParamName.engine_version]:{
     name:ParamName.engine_version,
@@ -1112,6 +1194,22 @@ export const paramList:{ [paramName: string]: ParamData }={
     patchs:[]
   },
 
+  [ParamName.winesync]:{
+    name:ParamName.winesync,
+    group:ParamGroup.ENGINE,
+    preCondition: [{
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.legacy_layout,ParamName.preset]
+    }, {
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+    }],
+    toggle:{
+        label:localizeStrEnum.WINESYNC_LABEL,
+        description:localizeStrEnum.WINESYNC_DESCRIPTION,
+        defaultEnable:false,
+    },
+    patchs:[]
+  },
+
   [ParamName.vkbasalt]:{
     name:ParamName.vkbasalt,
     group:ParamGroup.ENGINE,
@@ -1123,6 +1221,34 @@ export const paramList:{ [paramName: string]: ParamData }={
     toggle:{
         label:localizeStrEnum.VKBASALT_LABEL,
         description:localizeStrEnum.VKBASALT_DESCRIPTION,
+        defaultEnable:false,
+    },
+    patchs:[]
+  },
+
+  [ParamName.temp_fahrenheit]:{
+    name:ParamName.temp_fahrenheit,
+    group:ParamGroup.ENGINE,
+    preCondition:[{disable:[ParamName.no_display,ParamName.preset]}],
+    toggle:{
+        label:localizeStrEnum.TEMP_FAHRENHEIT_LABEL,
+        description:localizeStrEnum.TEMP_FAHRENHEIT_DESCRIPTION,
+        defaultEnable:false,
+    },
+    patchs:[]
+  },
+
+  [ParamName.flip_efficiency]:{
+    name:ParamName.flip_efficiency,
+    group:ParamGroup.ENGINE,
+    preCondition: [{
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.legacy_layout,ParamName.preset]
+    }, {
+      disable: [ParamName.fps_only, ParamName.no_display, ParamName.full,ParamName.preset]
+    }],
+    toggle:{
+        label:localizeStrEnum.FLIP_EFFICIENCY_LABEL,
+        description:localizeStrEnum.FLIP_EFFICIENCY_DESCRIPTION,
         defaultEnable:false,
     },
     patchs:[]
@@ -1644,16 +1770,19 @@ export const paramOrder:{[paramName:string]:number} = {
   [ParamName.debug]:21,
   [ParamName.arch]:22,
   [ParamName.engine_version]:23,
-  [ParamName.gamemode]:24,
-  [ParamName.vkbasalt]:25,
-  [ParamName.show_fps_limit]:26,
-  [ParamName.resolution]:27,
-  [ParamName.graphs_cpu_load]:28,
-  [ParamName.graphs_cpu_temp]:29,
-  [ParamName.graphs_gpu_core_clock]:30,
-  [ParamName.graphs_gpu_load]:31,
-  [ParamName.graphs_gpu_mem_clock]:32,
-  [ParamName.graphs_gpu_temp]:33,
-  [ParamName.graphs_ram]:34,
-  [ParamName.graphs_vram]:35,
+  [ParamName.throttling_status]:24,
+  [ParamName.gamemode]:25,
+  [ParamName.winesync]:26,
+  [ParamName.vkbasalt]:27,
+  [ParamName.flip_efficiency]:28,
+  [ParamName.show_fps_limit]:29,
+  [ParamName.resolution]:30,
+  [ParamName.graphs_cpu_load]:31,
+  [ParamName.graphs_cpu_temp]:32,
+  [ParamName.graphs_gpu_core_clock]:33,
+  [ParamName.graphs_gpu_load]:34,
+  [ParamName.graphs_gpu_mem_clock]:35,
+  [ParamName.graphs_gpu_temp]:36,
+  [ParamName.graphs_ram]:37,
+  [ParamName.graphs_vram]:38,
 }
