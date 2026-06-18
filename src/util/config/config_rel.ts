@@ -1789,7 +1789,8 @@ export const paramOrder:{[paramName:string]:number} = {
   [ParamName.gpu_fan]:39,
   [ParamName.cpu_efficiency]:40,
   [ParamName.throttling_status]:41,
-  [ParamName.winesync]:42,
-  [ParamName.temp_fahrenheit]:43,
-  [ParamName.flip_efficiency]:44,
+  [ParamName.throttling_status_graph]:42,
+  [ParamName.winesync]:43,
+  [ParamName.temp_fahrenheit]:44,
+  [ParamName.flip_efficiency]:45,
 }
