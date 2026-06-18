@@ -1176,6 +1176,21 @@ export const paramList:{ [paramName: string]: ParamData }={
     patchs:[]
   },
 
+  [ParamName.throttling_status_graph]:{
+    name:ParamName.throttling_status_graph,
+    group:ParamGroup.ENGINE,
+    preCondition:[{
+      enable:[ParamName.throttling_status],
+      disable:[ParamName.no_display,ParamName.fps_only,ParamName.preset]
+    }],
+    toggle:{
+        label:localizeStrEnum.THROTTLING_STATUS_GRAPH_LABEL,
+        description:localizeStrEnum.THROTTLING_STATUS_GRAPH_DESCRIPTION,
+        defaultEnable:false,
+    },
+    patchs:[]
+  },
+
   [ParamName.engine_version]:{
     name:ParamName.engine_version,
     group:ParamGroup.ENGINE,

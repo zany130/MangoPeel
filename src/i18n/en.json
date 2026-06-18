@@ -207,6 +207,8 @@
     "GPU_VOLTAGE_DESCRIPTION" : "Display the voltage of the GPU",
     "THROTTLING_STATUS_LABEL":"Throttling Status",
     "THROTTLING_STATUS_DESCRIPTION":"Display whether CPU or GPU is currently throttling",
+    "THROTTLING_STATUS_GRAPH_LABEL":"Throttling Status Graph",
+    "THROTTLING_STATUS_GRAPH_DESCRIPTION":"Display throttling status on the frametime graph",
     "WINESYNC_LABEL":"Wine Sync",
     "WINESYNC_DESCRIPTION":"Display Wine synchronization mode information",
     "TEMP_FAHRENHEIT_LABEL":"Use Fahrenheit",
